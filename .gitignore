@@ -1,0 +1,5 @@
+venv
+*.pyc
+*.jpg
+
+/client/node_modules

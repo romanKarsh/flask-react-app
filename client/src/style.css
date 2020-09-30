@@ -1,0 +1,194 @@
+html { 
+  font-family: sans-serif; 
+  background: #eee; 
+  padding: 1rem; 
+}
+body { 
+  max-width: 960px; 
+  margin: 0 auto; 
+  background: white; 
+}
+h1 { 
+  font-family: serif; 
+  color: #377ba8; 
+  margin: 1rem 0; 
+}
+a { 
+  color: #377ba8; 
+}
+button.logout {
+  color: #377ba8;
+}
+a:visited {
+  color: #377ba8;
+}
+hr { 
+  border: none; 
+  border-top: 1px solid lightgray; 
+}
+nav { 
+  background: lightgray; 
+  display: flex; 
+  align-items: center; 
+  padding: 0 0.5rem; 
+}
+nav h1 { 
+  flex: auto; 
+  margin: 0; 
+}
+nav h1 a button.logout { 
+  text-decoration: none;
+  padding: 0.25rem 0.5rem; 
+}
+nav ul  { 
+  display: flex; 
+  list-style: none; 
+  margin: 0; 
+  padding: 0; 
+}
+nav ul li a, nav ul li span, header .action, nav ul li button.logout { 
+  display: block; 
+  padding: 0.5rem; 
+}
+.content { 
+  padding: 0 1rem 1rem; 
+}
+.content > header { 
+  border-bottom: 1px solid lightgray; 
+  display: flex; 
+  align-items: flex-end; 
+}
+.content > header h1 { 
+  flex: auto; 
+  margin: 1rem 0 0.25rem 0; 
+}
+.flash { 
+  margin: 1em 0; 
+  padding: 1em; 
+  background: #cae6f6; 
+  border: 1px solid #377ba8; 
+}
+.post > header { 
+  display: flex; 
+  align-items: flex-end; 
+  font-size: 0.85em;
+}
+.post > header > div:first-of-type { 
+  flex: auto; 
+}
+.post > header h1 { 
+  font-size: 1.5em; 
+  margin-bottom: 0; 
+}
+.post .about { 
+  color: slategray; 
+  font-style: italic; 
+}
+.post .body {
+  white-space: pre-line; 
+}
+.content:last-child { 
+  margin-bottom: 0; 
+}
+.content form { 
+  margin: 1em 0; 
+  display: flex; 
+  flex-direction: column; 
+}
+.content label { 
+  font-weight: bold;
+   margin-bottom: 0.5em; 
+}
+.content input, .content textarea { 
+  margin-bottom: 1em; 
+}
+.content select { 
+  margin-top: 5px; 
+  margin-bottom: 5px; 
+  width: 30% 
+}
+.imdb { 
+  float: right; 
+  width: 50%;
+  height: 110px;
+  overflow: auto;
+  margin-top: 15px;
+}
+.imdb::-webkit-scrollbar {
+  width: 6px;
+}
+.imdb::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey; 
+  border-radius: 10px;
+}
+.imdb::-webkit-scrollbar-thumb {
+  background:  #377ba8; 
+  border-radius: 10px;
+}
+.imdb::-webkit-scrollbar-thumb:hover {
+  background: rgb(29, 29, 29); 
+}
+#loc { 
+  margin-top: 5px; 
+  margin-bottom: 5px; 
+  width: 30% 
+}
+input.danger { 
+  color: #cc2f2e; 
+}
+input[type=submit] { 
+  align-self: start; 
+  min-width: 10em; 
+}
+ul.movieList {
+  list-style: none;
+  padding-left: 0;
+}
+.movieBtn {
+  background:  #377ba8; 
+  color: white;
+  border-radius: 12px;
+  border: none;
+  margin: 4px 2px;
+  font-size: 16px;
+}
+.movieBtn:focus {
+  outline-style: solid;
+  outline-color: black;
+  outline-width: thin;
+  -moz-outline-radius: 12px;
+}
+.fileInpt {
+  background:  #377ba8; 
+  color: white;
+  border-radius: 6px;
+  border: none;
+  margin: 4px 2px;
+  font-size: 16px;
+  width: 100%;
+}
+button.logout {
+  color: #377ba8; 
+  align-items: normal;
+  background-color: rgba(0,0,0,0);
+  border-color: rgb(0, 0, 238);
+  border-style: none;
+  box-sizing: content-box;
+  cursor: pointer;
+  display: inline;
+  font: inherit;
+  padding: 0;
+  perspective-origin: 0 0;
+  text-align: start;
+  text-decoration: underline;
+  transform-origin: 0 0;
+  -moz-appearance: none;
+  -webkit-logical-height: 1em;
+  -webkit-logical-width: auto;
+}
+.logout:focus {
+  border-color: rgb(0, 0, 238);
+  border-style: none;
+  border: none;
+  outline: 0;
+}
