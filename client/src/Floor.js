@@ -1,29 +1,19 @@
 import React from 'react';
 import Header from './Header';
-import Axios from 'axios';
-import { uploadFile, fileChangeHandler } from "./actions";
+import { uploadFile, fileChangeHandler, fetchUploadFile } from "./actions";
+import BaseReactComponent from "./BaseReactComponent";
 
-class Floor extends React.Component {
+class Floor extends BaseReactComponent {
+  filterState({ floor, source, planLoad }) {
+    return { floor, source, planLoad };
+  }
   constructor(props) {
     super(props);
-    this.state = { source: "", planLoad: false }
-    Axios.get( `/uploads/${this.props.user}/floor_plan.jpg`, 
-      { responseType: 'arraybuffer' }
-    ).then(response => {
-      const base64 = btoa(
-        new Uint8Array(response.data).reduce(
-          (data, byte) => data + String.fromCharCode(byte), ''
-        ),
-      );
-      this.setState({ source: "data:;base64," + base64 });
-      this.setState({ planLoad: true });
-    });
+    fetchUploadFile();
   }
   render() {
+    const { floor, source, planLoad } = this.state;
     const currentUser = this.props.user;
-    const floor = this.props.floor;
-    //console.log("floor " + floor);
-    //console.log("planLoad " + this.state.planLoad);
     return (
       <div>
         <Header user={currentUser} />
@@ -35,8 +25,7 @@ class Floor extends React.Component {
             <input className="fileInpt" type="file" name="file" onChange={fileChangeHandler} />
             <input className="fileInpt" type="submit" value="Upload Floor Plan Image" />
           </form>
-          {this.state.planLoad && floor && <img src={this.state.source} alt="Floor Plan"></img>}
-           {/* {`./uploads/${currentUser}/floor_plan.jpg`} */}
+          {planLoad && floor && <img src={source} alt="Floor Plan"></img>}
         </section>
       </div>
     );

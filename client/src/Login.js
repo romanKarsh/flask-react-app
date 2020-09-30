@@ -32,7 +32,7 @@ class Login extends BaseReactComponent {
                   value={loginForm.password}
                   onChange={e => updateForm(e.target)} 
                   required />
-            <input type="submit" value="Login" />
+            <input type="submit" value="Login" className="movieBtn" />
           </form>
         </section>
       </div>

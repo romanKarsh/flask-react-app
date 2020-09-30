@@ -10,8 +10,8 @@ import BaseReactComponent from "./BaseReactComponent";
 import { readCookie } from "./actions";
 
 class App extends BaseReactComponent {
-  filterState({ currentUser, cookie, floor }) {
-    return { currentUser, cookie, floor };
+  filterState({ currentUser, cookie }) {
+    return { currentUser, cookie };
   }
 
   constructor(props) {
@@ -21,14 +21,14 @@ class App extends BaseReactComponent {
   }
 
   render() {
-    const { currentUser, cookie, floor } = this.state;
+    const { currentUser, cookie } = this.state;
     if (cookie === false) {
       return (<section className="content"> <header> <h1> Loading </h1> </header> </section>);
     }
     return (
       <BrowserRouter>
         <Switch> {/* Similar to a switch statement - shows the component depending on the URL path */}
-          <Route exact path={"/floor"} render={({ history }) => (currentUser ? <Floor history={history} user={currentUser} floor={floor} /> : <Redirect to='/' />)} />
+          <Route exact path={"/floor"} render={({ history }) => (currentUser ? <Floor history={history} user={currentUser}/> : <Redirect to='/' />)} />
           <Route exact path={"/add-movie"} render={({ history }) => (currentUser ? <CreateMovie history={history} user={currentUser} /> : <Redirect to='/' />)} />
           <Route exact path={"/register"} render={({ history }) => (!currentUser ? <Register history={history} /> : <Redirect to='/' />)} />
           <Route exact path={"/login"} render={({ history }) => (!currentUser ? <Login history={history} /> : <Redirect to='/' />)} />

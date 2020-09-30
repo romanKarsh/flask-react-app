@@ -1,4 +1,5 @@
 import { getState, setState } from "statezero";
+import Axios from 'axios';
 
 // Initialize all state paths used by app as empty.
 export const setEmptyState = () => {
@@ -11,6 +12,8 @@ export const setEmptyState = () => {
   setState("floor", false);
   setState("locationList", []);
   setState("movieList", []);
+  setState("source", "");
+  setState("planLoad", false);
 };
 
 export const readCookie = () => {
@@ -218,13 +221,15 @@ export const uploadFile = (e) => {
   e.preventDefault();
   let formData = new FormData();
   formData.append("file", getState("selectedFile"));
-  fetch('/floor', {method: "POST", body: formData}).then((res) => {
+  fetch('/floor', { method: "POST", body: formData }).then((res) => {
     return res.json();
   }).then((json) => {
     if (json.error) {
       alert(json.error);
     } else {
+      //setTimeout(() => setState("floor", json.floor), 2000);
       setState("floor", json.floor);
+      fetchUploadFile();
     }
   }).catch((err) => {
     alert(err);
@@ -233,4 +238,19 @@ export const uploadFile = (e) => {
 
 export const fileChangeHandler = (e) => {
   setState("selectedFile", e.target.files[0])
+}
+
+export const fetchUploadFile = () => {
+  console.log("fetch upload file");
+  Axios.get(`/uploads/${getState("currentUser")}/floor_plan.jpg`,
+    { responseType: 'arraybuffer' }
+  ).then(response => {
+    const base64 = btoa(
+      new Uint8Array(response.data).reduce(
+        (data, byte) => data + String.fromCharCode(byte), ''
+      ),
+    );
+    setState("source", "data:;base64," + base64);
+    setState("planLoad", true);
+  });
 }

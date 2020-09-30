@@ -33,7 +33,7 @@ class Register extends BaseReactComponent {
                   value={registerForm.password}
                   onChange={e => updateForm(e.target)} 
                   required />
-            <input type="submit" value="Register" />
+            <input type="submit" value="Register" className="movieBtn" />
           </form>
         </section>
       </div>

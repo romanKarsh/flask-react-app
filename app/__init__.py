@@ -3,6 +3,7 @@ from flask import Flask, send_from_directory, session
 from . import db
 from . import auth
 from . import movie
+from . import floor
 
 MONGO = os.environ.get('MONGO_URI') or "mongodb://localhost:27017/FlaskAPI"
 SECRET = os.environ.get('SECRET_KEY') or 'dev'
@@ -21,6 +22,7 @@ def create_app():
         pass
     app.register_blueprint(auth.bp)
     app.register_blueprint(movie.bp)
+    app.register_blueprint(floor.bp)
 
     # Serve React App
     @app.route('/', defaults={'path': ''})
